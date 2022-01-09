@@ -1,2 +1,2 @@
-# OTUS_Study
+# OTUS
 OTUS Studying for a Front-End Developer
