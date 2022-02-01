@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Урок 1 - Домашнее задание: Хижняков МС</title>
+</head>
+
+<body style = "font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+  <h1>Задание:</h1>
+  <h3>Написать функцию</h3>
+  <h4>promiseReduce(asyncFunctions, reduce, initialValue)</h4>
+  <br>
+  <h4>
+	asyncFunctions - массив асинхронных функций, возвращающих промис<br>
+	reduce(memo, value) - функция, которая будет вызвана для каждого успешно завершившегося промиса.<br>
+	initialValue - стартовое значение для функции reduce<br>
+	<br>
+	<p style='width: 800px'>
+		promiseReduce последовательно вызывает переданные асинхронные функции
+		и выполняет reduce функцию сразу при получении результата до вызова следующей асинхронной функции. 
+		Функция promiseReduce должна возвращать промис с конечным результатом.
+	</p>
+  </h4>
+  <br>
+  <button id="mcxBtn1" onclick="return onClickTask(this)" style="width: 100px; height: 30px;">Test-1</button>
+  <button id="mcxBtn2" onclick="return onClickTask2(this)" style="width: 100px; height: 30px;">Test-2</button>
+  <button id="mcxBtn3" onclick="return onClickTask3(this)" style="width: 100px; height: 30px;">Test-3</button>
+
+  <script src="lesson_2.js"></script>
+
+</body>
+</html>
