@@ -24,27 +24,14 @@ var execFunc = function (memo, value) {
 }
 
 function promiseReduce(asyncFunctions, reduce, initialValue) { 
-
-  var testValal = initialValue;
-  if (asyncFunctions.length === 0)
-    return () => {alert("No Promise functions in array!")};
-
-  function myRecursive(funcArray) {
-    promise = funcArray.shift();
-    return promise().then(
-                  (data) => {
-                    testValal = reduce(testValal, data)
-                    if(funcArray.length != 0) {
-                      return myRecursive(funcArray)
-                    } else {
-                      console.log(testValal)
-                    }
-                  })
-  }
-    
-  var arrayOfFunctinos = asyncFunctions.slice();
-
-  return myRecursive(arrayOfFunctinos);
+  
+  return asyncFunctions.reduce( (result, func) => {
+    return result.then( value => { 
+      return func().then( ret => { 
+        return reduce(value, ret);  
+      });
+    });  
+  }, Promise.resolve(initialValue));
 }
 
 const button1 = document.getElementById("mcxBtn1");
@@ -54,18 +41,15 @@ const button3 = document.getElementById("mcxBtn3");
 
 button1.onclick = function() {
   console.log("-- Test-1 --");
-  promiseReduce([fn1, fn2], execFunc, 1);
+  promiseReduce([fn1, fn2], execFunc, 1).then(console.log);
 }
 
 button2.onclick = function() {
   console.log("-- Test-2 --");
-  promiseReduce([fn1, fn2, fn3], execFunc, 2);
+  promiseReduce([fn1, fn2, fn3], execFunc, 2).then(console.log);
 }
 
 button3.onclick = function() {
   console.log("-- Test-3 --");
-  promiseReduce([fn1, fn2, fn3, fn4], execFunc, 3);
+  promiseReduce([fn1, fn2, fn3, fn4], execFunc, 3).then(console.log);
 }
-
-
-
