@@ -1,0 +1,11 @@
+{
+  "name": "modulesapp",
+  "version": "1.0.0",
+  "scripts": {
+    "start" : "node tree.js",
+    "tree"  : "node tree.js"
+  },
+  "dependencies": {
+    "jest": "^27.5.1"
+  }
+}
